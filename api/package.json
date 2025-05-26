@@ -1,17 +1,19 @@
 {
   "type": "module",
   "scripts": {
-    "start": "node index.js"
+    "start": "ts-node-esm index.ts"
   },
   "name": "api",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "index.ts",
   "keywords": [],
   "author": "",
   "license": "ISC",
   "description": "松本市田川地区ごみ収集日程API",
   "dependencies": {
     "@hono/node-server": "^1.14.2",
-    "hono": "^4.7.10"
+    "hono": "^4.7.10",
+    "typescript": "^5.4.0",
+    "ts-node": "^10.9.1"
   }
 }

@@ -11,7 +11,7 @@
   "license": "ISC",
   "description": "松本市田川地区ごみ収集日程API",
   "dependencies": {
-    "@hono/node-server": "^1.0.0",
-    "hono": "^3.0.0"
+    "@hono/node-server": "^1.14.2",
+    "hono": "^4.7.10"
   }
 }

@@ -1,0 +1,36 @@
+name: Lambdaデプロイ
+
+on:
+  push:
+    branches:
+      - 'feat/**'
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: リポジトリをチェックアウト
+        uses: actions/checkout@v3
+
+      - name: Node.jsをセットアップ
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      - name: 依存パッケージをインストール
+        working-directory: api
+        run: npm ci --production
+
+      - name: デプロイ用アーカイブを作成
+        working-directory: api
+        run: zip -r ../function.zip .
+
+      - name: AWS資格情報を設定
+        uses: aws-actions/configure-aws-credentials@v2
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ secrets.AWS_REGION }}
+
+      - name: Lambdaへデプロイ
+        run: aws lambda update-function-code --function-name ${{ secrets.AWS_LAMBDA_FUNCTION_NAME }} --zip-file fileb://function.zip

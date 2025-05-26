@@ -1,0 +1,11 @@
+services:
+  garbage-api:
+    image: node:20-alpine
+    working_dir: /app
+    volumes:
+      - ./api:/app
+    ports:
+      - "3000:3000"
+    command: sh -c "npm install && npm start"
+    environment:
+      - NODE_ENV=production

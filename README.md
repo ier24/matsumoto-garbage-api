@@ -129,14 +129,14 @@ fetch('http://localhost:3000/api/tagawa/garbage?date=2025-06-25&details=true')
 このAPIは将来的な拡張を考慮して設計されています。現在は以下の拡張が可能です：
 
 1. `details=true` パラメータを追加することで、ごみ種別の詳細情報（説明や例）を取得できます
-2. 新しいごみ種別や収集日程の追加は `garbage_data.js` ファイルを編集するだけで対応可能です
+2. 新しいごみ種別や収集日程の追加は `garbage_data.ts` ファイルを編集するだけで対応可能です
 3. 他の地区のデータを追加する場合は、同様のデータ構造で新しいファイルを作成し、APIエンドポイントを追加することで対応できます
 
 ## ファイル構成
 
 - `api/` - APIソースコード
-  - `index.js` - メインのAPIサーバーコード
-  - `garbage_data.js` - ごみ収集日程データ
+  - `index.ts` - メインのAPIサーバーコード
+  - `garbage_data.ts` - ごみ収集日程データ
   - `package.json` - 依存パッケージ情報
 - `docker-compose.yml` - Docker Compose設定ファイル
 - `README.md` - 本ドキュメント

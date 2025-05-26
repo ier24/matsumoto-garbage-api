@@ -4,7 +4,13 @@
  */
 
 // ごみ種別の定義
-export const GARBAGE_TYPES = {
+export interface GarbageType {
+  name: string;
+  description: string;
+  examples: string[];
+}
+
+export const GARBAGE_TYPES: Record<string, GarbageType> = {
   "可": {
     name: "可燃ごみ",
     description: "可燃ごみ（毎週 月・木曜日）",
@@ -461,7 +467,7 @@ const schedule2026_03 = {
 };
 
 // 全スケジュールをマージ
-export const garbageSchedule = {
+export const garbageSchedule: Record<string, string[]> = {
   ...schedule2025_04,
   ...schedule2025_05,
   ...schedule2025_06,
